@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ai-devops-platform
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/KhushbooShah123/ai-devops-manifests.git # Apna GitHub ID daalo
+    targetRevision: HEAD
+    path: .
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true # Agar GitHub se file hata doge, toh K8s se bhi hat dega
+      selfHeal: true # Agar koi manually K8s me change kare, toh ArgoCD wapas GitHub jaisa kar dega

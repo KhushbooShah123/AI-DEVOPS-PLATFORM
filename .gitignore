@@ -1,0 +1,106 @@
+# ==========================
+# Terraform
+# ==========================
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+terraform.tfvars
+terraform.tfvars.json
+.terraform.lock.hcl
+
+# If you want to keep provider versions locked,
+# remove the above line.
+
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# ==========================
+# Environment Variables
+# ==========================
+.env
+.env.*
+!.env.example
+
+# ==========================
+# IDE
+# ==========================
+.vscode/
+.idea/
+*.iml
+
+# ==========================
+# Operating System
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Logs
+# ==========================
+*.log
+logs/
+
+# ==========================
+# Kubernetes
+# ==========================
+kubeconfig
+*.kubeconfig
+*-secret.yaml
+
+# ==========================
+# AWS
+# ==========================
+.aws/
+
+# ==========================
+# Helm
+# ==========================
+charts/
+*.tgz
+
+# ==========================
+# Docker
+# ==========================
+.docker/
+
+# ==========================
+# Temporary Files
+# ==========================
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# ==========================
+# Build Files
+# ==========================
+dist/
+build/
+
+# ==========================
+# KEY Files
+# ==========================
+*aws_credentials.txt
+*access_key.txt
+*secret_key.txt
+*private_key.pem
+*id_rsa
+*id_ed25519

@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ai-worker-monitor
+  labels:
+    app: ai-worker
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app: ai-worker # Ye backend.yaml ke labels se match karna chahiye
+  endpoints:
+  - port: web
+    path: /metrics
+    interval: 15s

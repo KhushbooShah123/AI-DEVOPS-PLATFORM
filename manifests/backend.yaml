@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-worker
+  template:
+    metadata:
+      labels:
+        app: ai-worker
+    spec:
+      containers:
+      - name: ai-worker
+        image: 801651112210.dkr.ecr.ap-south-1.amazonaws.com/khushboo-ai-worker:latest
+        ports:
+        - containerPort: 5000
+          name: web
+        envFrom:
+        - secretRef:
+            name: app-db-credentials
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-worker-service
+  labels:
+    app: ai-worker
+spec:
+  type: ClusterIP
+  selector:
+    app: ai-worker
+  ports:
+    - name: web
+      port: 5000
+      targetPort: 5000
