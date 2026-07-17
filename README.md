@@ -62,30 +62,53 @@ The project focuses on demonstrating **modern DevOps architecture**, cloud deplo
 
 # 📂 Repository Structure
 
-```text
 ai-devops-platform/
 
+├── .github/
+│   └── workflows/
+│       └── deploy.yml              # CI/CD Pipeline
+│
 ├── app-code/
 │   ├── backend/
+│   │   ├── app.py
+│   │   ├── Dockerfile
+│   │   └── requirements.txt
+│   │
 │   └── frontend/
+│       ├── Dockerfile
+│       ├── index.html
+│       └── nginx.conf
 │
 ├── terraform/
-│   ├── VPC
-│   ├── EKS
-│   ├── IAM
-│   └── Infrastructure
-|── manifests/
-|    
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   └── versions.tf
+│
 ├── argocd/
-│   ├── Helm
-│   ├── Monitoring
-│   ├── Redis
-│   └── Kubernetes
+│   ├── main.tf
+│   ├── monitoring.tf
+│   └── databases.tf
+│
+├── ecr/
+│   ├── main.tf
+│   └── output.tf
+│
+├── manifests/
+│   ├── backend.yaml
+│   ├── frontend.yml
+│   ├── ai-worker-monitor.yaml
+│   └── argocd-app.yml
 │
 ├── screenshots/
 │
-└── README.md
-```
+├── System Architecture/
+│   └── system_architecture.png
+│
+├── README.md
+├── CONTRIBUTING.md
+├── CHANGELOG.md
+└── LICENSE
 
 ---
 
@@ -141,27 +164,33 @@ The **Fix with AI** feature is asynchronous.
 
 Instead of making users wait:
 
-```
-User
-
-↓
-
-POST /api/fix
-
-↓
-
-202 Accepted
-
-↓
-
-Background Queue
-
-↓
-
-Worker processes task
-```
+                   👤 User (Client UI)
+                             │
+                             │  POST /api/fix
+                             ▼
+                     ⚡ Fast API Gateway (Flask)
+                             │
+                             ├─►  🟢 202 Accepted (Immediate Response)
+                             │
+                             ▼
+                     📥 Background Queue (Redis)
+                             │
+                             │  Pops Pending Task
+                             ▼
+                     ⚙️ Worker (Asynchronous Task)
+                             │
+                             │  Executes Process
+                             ▼
+                     🤖 Fix with AI (Long-running Work)
 
 This keeps the UI responsive while long-running work executes in the background.
+
+
+## Fix with AI
+
+<p align="center">
+<img src="./screenshots/fix_with_ai.png" width="900"/>
+</p>
 
 ---
 
@@ -187,9 +216,9 @@ These metrics are visualized in Grafana dashboards.
 
 ---
 
-# 📸 Screenshots
+# 📸 Project Screenshots
 
-## Platform UI
+## Application UI
 
 <p align="center">
 <img src="./screenshots/ui(fresh_scan).png" width="900"/>
@@ -214,45 +243,37 @@ These metrics are visualized in Grafana dashboards.
 
 # 🔄 CI/CD Workflow
 
-```text
-Developer Push
+                     👨‍💻 Developer Push
+                             │
+                             ▼
+                     🐙 GitHub Actions
+                             │
+                             ▼
+                     🐳 Build Docker Images
+                             │
+                             ▼
+              📦 Push Images ➔ Amazon ECR (Registry)
+                             │
+                             ▼
+                     ⚙️ Update K8s Manifests
+                             │
+                             ▼
+                     🐙 ArgoCD Detects Change
+                             │
+                             ▼
+                     🚀 Deploy to Amazon EKS
 
-        │
 
-        ▼
+## GitHub Actions CI Pipeline
 
-GitHub Actions
+<p align="center">
+<img src="./screenshots/cicd_pipeline.png" width="900"/>
+</p>
 
-        │
+<p align="center">
+<img src="./screenshots/github_actions.png" width="900"/>
+</p>
 
-        ▼
-
-Build Docker Images
-
-        │
-
-        ▼
-
-Push Images → Amazon ECR
-
-        │
-
-        ▼
-
-Update Kubernetes Manifests
-
-        │
-
-        ▼
-
-ArgoCD Detects Change
-
-        │
-
-        ▼
-
-Deploy to Amazon EKS
-```
 
 ---
 
