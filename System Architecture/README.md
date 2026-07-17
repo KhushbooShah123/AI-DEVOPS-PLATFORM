@@ -1,5 +1,5 @@
 # 🏗 Architecture
-text+-----------------------+
+
                      |    🌐 User Browser    |
                      +-----------+-----------+
                                  |
@@ -43,7 +43,7 @@ text+-----------------------+
 # 🏗️ System Architecture
 
 <p align="center">
-  <img src="./architecture.png" alt="Project Architecture" width="1000"/>
+  <img src="./system_architecture.png" alt="Project Architecture" width="1000"/>
 </p>
 
 This project follows a GitOps-based deployment pipeline where GitHub Actions builds container images, ArgoCD synchronizes Kubernetes manifests, and Amazon EKS runs the application. Redis is used for caching, background processing handles long-running tasks asynchronously, and Prometheus with Grafana provide observability.

@@ -192,7 +192,7 @@ These metrics are visualized in Grafana dashboards.
 ## Platform UI
 
 <p align="center">
-<img src="./screenshots/ui*.png" width="900"/>
+<img src="./screenshots/ui(fresh_scan).png" width="900"/>
 </p>
 
 ---
