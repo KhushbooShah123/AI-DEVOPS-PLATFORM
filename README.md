@@ -62,55 +62,54 @@ The project focuses on demonstrating **modern DevOps architecture**, cloud deplo
 
 # 📂 Repository Structure
 
-ai-devops-platform/
-
-├── .github/
-│   └── workflows/
-│       └── deploy.yml              # CI/CD Pipeline
+📁 ai-devops-platform/
 │
-├── app-code/
-│   ├── backend/
-│   │   ├── app.py
-│   │   ├── Dockerfile
-│   │   └── requirements.txt
+├── ⚙️ .github/
+│   └── 🐙 workflows/
+│       └── 🚀 deploy.yml                  # CI/CD Pipeline
+│
+├── 💻 app-code/
+│   ├── 🐍 backend/
+│   │   ├── 📄 app.py
+│   │   ├── 🐳 Dockerfile
+│   │   └── 📦 requirements.txt
 │   │
-│   └── frontend/
-│       ├── Dockerfile
-│       ├── index.html
-│       └── nginx.conf
+│   └── 🌐 frontend/
+│       ├── 🐳 Dockerfile
+│       ├── 📄 index.html
+│       └── ⚙️ nginx.conf
 │
-├── terraform/
-│   ├── main.tf
-│   ├── variables.tf
-│   ├── outputs.tf
-│   └── versions.tf
+├── 🏗️ terraform/
+│   ├── 📄 main.tf
+│   ├── 📄 variables.tf
+│   ├── 📄 outputs.tf
+│   └── 📄 versions.tf
 │
-├── argocd/
-│   ├── main.tf
-│   ├── monitoring.tf
-│   └── databases.tf
+├── 🐙 argocd/
+│   ├── 📄 main.tf
+│   ├── 📄 monitoring.tf
+│   └── 📄 databases.tf
 │
-├── ecr/
-│   ├── main.tf
-│   └── output.tf
+├── 📦 ecr/
+│   ├── 📄 main.tf
+│   └── 📄 output.tf
 │
-├── manifests/
-│   ├── backend.yaml
-│   ├── frontend.yml
-│   ├── ai-worker-monitor.yaml
-│   └── argocd-app.yml
+├── ☸️ manifests/
+│   ├── 📄 backend.yaml
+│   ├── 📄 frontend.yml
+│   ├── 📄 ai-worker-monitor.yaml
+│   └── 📄 argocd-app.yml
 │
-├── screenshots/
+├── 🖼️ screenshots/
 │
-├── System Architecture/
-│   └── system_architecture.png
+├── 📐 System Architecture/
+│   └── 🖼️ system_architecture.png
 │
-├── README.md
-├── CONTRIBUTING.md
-├── CHANGELOG.md
-└── LICENSE
-
----
+├── 📝 README.md
+├── 🤝 CONTRIBUTING.md
+├── 📋 CHANGELOG.md
+├── 🛡️ LICENSE
+└── 🙈 .gitignore
 
 # 🚀 Features
 
@@ -269,9 +268,10 @@ These metrics are visualized in Grafana dashboards.
 <p align="center">
 <img src="./screenshots/cicd_pipeline.png" width="900"/>
 </p>
-
+ 
+ ## GitHub Actions Success
 <p align="center">
-<img src="./screenshots/github_actions.png" width="900"/>
+<img src="./screenshots/github_action.png" width="900"/>
 </p>
 
 
