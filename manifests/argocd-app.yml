@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/KhushbooShah123/ai-devops-manifests.git # Apna GitHub ID daalo
-    targetRevision: HEAD
-    path: .
+    repoURL: https://github.com/KhushbooShah123/AI-DEVOPS-PLATFORM.git
+    targetRevision: main
+    path: manifests
   destination:
     server: https://kubernetes.default.svc
     namespace: default
